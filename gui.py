@@ -3,7 +3,7 @@ import functions
 import FreeSimpleGUI as sg
 import time
 
-
+sg.theme("darkPurple4")
 clock = sg.Text('', key ="clock")
 label = sg.Text("Please Enter a Todo")
 input_box = sg.InputText(tooltip="Enter a Todo", key='Todo')
@@ -19,8 +19,8 @@ window = sg.Window("My To-Do App", layout=[[clock], [label], [input_box, add_but
 
 while True:
 
-    window["clock"].update(value=time.strftime("%A %d, %Y, %H:%M:%S"))
     event, values = window.read(timeout=200)
+    window["clock"].update(value=time.strftime("%A %d, %Y, %H:%M:%S"))
 
     match event:
         case 'Add':
