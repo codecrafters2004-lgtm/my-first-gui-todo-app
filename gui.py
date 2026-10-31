@@ -7,10 +7,10 @@ sg.theme("darkPurple4")
 clock = sg.Text('', key ="clock")
 label = sg.Text("Please Enter a Todo")
 input_box = sg.InputText(tooltip="Enter a Todo", key='Todo')
-add_button = sg.Button(size=10, image_source='add.png', mouseover_colors="Black", key="Add")
+add_button = sg.Button(size=[45, 10], image_source='add.png', mouseover_colors="Black", key="Add")
 list_box = sg.Listbox(values=functions.get_todos(), key="Todos", enable_events=True, size=[45, 10])
 edit_button = sg.Button("Edit")
-complete_button = sg.Button(size=10, image_source='complete.png', mouseover_colors="Black", key="Complete")
+complete_button = sg.Button(size=[45, 10], image_source='complete.png', mouseover_colors="Black", key="Complete")
 exit_button = sg.Button("Exit")
 
 
@@ -21,9 +21,7 @@ while True:
 
     event, values = window.read(timeout=200)
     window["clock"].update(value=time.strftime("%A %d, %Y, %H:%M:%S"))
-
-    if event == sg.WIN_CLOSED:
-        break
+    
 
     match event:
         case 'Add':
@@ -63,6 +61,8 @@ while True:
         case 'Todos':
             window['Todo'].update(value=values['Todos'][0])
 
+        case sg.WIN_CLOSED:
+            break
 
 
 
