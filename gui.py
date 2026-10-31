@@ -2,6 +2,11 @@ import functions
 # pyrefly: ignore[missing-import]
 import FreeSimpleGUI as sg
 import time
+import os
+
+if not os.path.exists('todos.txt'):
+    with open('todos.txt', 'w') as file:
+        pass
 
 sg.theme("darkPurple4")
 clock = sg.Text('', key ="clock")
