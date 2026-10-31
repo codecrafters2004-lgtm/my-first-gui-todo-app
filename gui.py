@@ -1,21 +1,24 @@
+import os
+import time
+
 import functions
 # pyrefly: ignore[missing-import]
 import FreeSimpleGUI as sg
-import time
-import os
 
-if not os.path.exists('todos.txt'):
-    with open('todos.txt', 'w') as file:
+from settings import ADD_ICON_PATH, COMPLETE_ICON_PATH, TODO_FILE_PATH
+
+if not os.path.exists(TODO_FILE_PATH):
+    with open(TODO_FILE_PATH, 'w', encoding='utf-8') as file:
         pass
 
 sg.theme("darkPurple4")
 clock = sg.Text('', key ="clock")
 label = sg.Text("Please Enter a Todo")
 input_box = sg.InputText(tooltip="Enter a Todo", key='Todo')
-add_button = sg.Button(size=[45, 10], image_source='add.png', mouseover_colors="Black", key="Add")
+add_button = sg.Button(size=[45, 10], image_source=str(ADD_ICON_PATH), mouseover_colors="Black", key="Add")
 list_box = sg.Listbox(values=functions.get_todos(), key="Todos", enable_events=True, size=[45, 10])
 edit_button = sg.Button("Edit")
-complete_button = sg.Button(size=[45, 10], image_source='complete.png', mouseover_colors="Black", key="Complete")
+complete_button = sg.Button(size=[45, 10], image_source=str(COMPLETE_ICON_PATH), mouseover_colors="Black", key="Complete")
 exit_button = sg.Button("Exit")
 
 
